@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Api\v1" />
-    <Folder Include="Api\v2" />
     <Folder Include="CartingService.BLL\" />
     <Folder Include="CartingService.DAL\" />
     <Folder Include="CartingService.Test\" />
@@ -14,6 +12,8 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LiteDB" Version="5.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.1.6" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
