@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CartingService.BLL\" />
-    <Folder Include="CartingService.DAL\" />
-    <Folder Include="CartingService.Test\" />
+    <Folder Include="BLL\" />
+    <Folder Include="DAL\" />
+    <Folder Include="Test\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>

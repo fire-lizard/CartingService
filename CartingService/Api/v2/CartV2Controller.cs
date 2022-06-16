@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CartingService.Api.v2
 {
     [ApiController]  
-    [ApiVersion("1.0")]  
+    [ApiVersion("2.0")]  
     [Route("api/{v:apiVersion}/cart")]  
     public class CartV2Controller
     {
