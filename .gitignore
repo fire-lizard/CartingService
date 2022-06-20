@@ -2,3 +2,6 @@
 /.vs
 /CartingService/bin
 /CartingService/obj
+/CartingService.Api/bin
+/CartingService.Api/obj
+/CartingService/Data
