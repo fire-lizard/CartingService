@@ -10,24 +10,55 @@ namespace CartingService.Api.v2
     public class CartV2Controller
     {
         [HttpGet]
-        public IEnumerable<CartItem>? Get(Guid cartId)
+        public ActionResult<IEnumerable<CartItem>?> Get(Guid cartId)
         {
             CartRepository cr = new CartRepository();
-            return cr.GetCart(cartId)?.Items;
+            try
+            {
+                var cart = cr.GetCart(cartId);
+                if (cart == null)
+                {
+                    return new NotFoundResult();
+                }
+
+                return new OkObjectResult(cart.Items);
+            }
+            catch (Exception exc)
+            {
+                return new BadRequestObjectResult(exc.GetExceptionMessages());
+            }
         }
         
         [HttpPost]
-        public void Post(Guid cartId, CartItem item)
+        public IActionResult Post(Guid cartId, CartItem item)
         {
             CartRepository cr = new CartRepository();
-            cr.AddItem(cartId, item);
+            try
+            {
+                cr.AddItem(cartId, item);
+            }
+            catch (Exception exc)
+            {
+                return new BadRequestObjectResult(exc.GetExceptionMessages());
+            }
+
+            return new OkResult();
         }
         
         [HttpDelete]
-        public void Delete(Guid cartId, int cartItemId)
+        public IActionResult Delete(Guid cartId, int cartItemId)
         {
             CartRepository cr = new CartRepository();
-            cr.RemoveItem(cartId, cartItemId);
+            try
+            {
+                cr.RemoveItem(cartId, cartItemId);
+            }
+            catch (Exception exc)
+            {
+                return new BadRequestObjectResult(exc.GetExceptionMessages());
+            }
+
+            return new OkResult();
         }
     }
 }
