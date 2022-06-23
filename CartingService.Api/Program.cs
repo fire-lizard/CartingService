@@ -8,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddVersionedApiExplorer(options =>
+{
+    options.GroupNameFormat = "'v'VVV";
+    options.SubstituteApiVersionInUrl = true;
+});
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddApiVersioning(config =>
@@ -17,12 +22,7 @@ builder.Services.AddApiVersioning(config =>
     config.ReportApiVersions = true;
     
     config.ApiVersionReader = ApiVersionReader.Combine(
-        // The Default versioning mechanism which reads the API version from the "api-version" Query String paramater.
-        new QueryStringApiVersionReader("api-version"),
-        // Use the following, if you would like to specify the version as a custom HTTP Header.
-        new HeaderApiVersionReader("Accept-Version"),
-        // Use the following, if you would like to specify the version as a Media Type Header.
-        new MediaTypeApiVersionReader("api-version")
+        new QueryStringApiVersionReader("api-version")
     );
 });
 
