@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace CartingService.Api.v2
 {
     [ApiController]  
-    [ApiVersion("2.0")]  
-    [Route("api/v2/cart")]  
-    public class CartV2Controller
+    [ApiVersion("2")]  
+    [Route("api/v2/[controller]")]  
+    public class CartController
     {
+        [MapToApiVersion("2")] 
         [HttpGet]
         public ActionResult<IEnumerable<CartItem>?> Get(Guid cartId)
         {
@@ -29,6 +30,7 @@ namespace CartingService.Api.v2
             }
         }
         
+        [MapToApiVersion("2")] 
         [HttpPost]
         public IActionResult Post(Guid cartId, CartItem item)
         {
@@ -45,6 +47,7 @@ namespace CartingService.Api.v2
             return new OkResult();
         }
         
+        [MapToApiVersion("2")] 
         [HttpDelete]
         public IActionResult Delete(Guid cartId, int cartItemId)
         {
