@@ -1,5 +1,6 @@
 ﻿using CartingService.BLL;
 using CartingService.DAL;
+using Experimental.System.Messaging;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CartingService.Api;
@@ -10,6 +11,23 @@ namespace CartingService.Api;
 [Route("api/[controller]")]
 public class CartController
 {
+    private const string _mqName = ".\\Private$\\billpay";
+    
+    public struct ChangedItem
+    {
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+    }
+    
+    private void ReceiveMessage()
+    {
+        Type[] arrTypes = {typeof(ChangedItem), typeof(object)};
+        MessageQueue mq = new MessageQueue(_mqName);
+        mq.Formatter = new XmlMessageFormatter(arrTypes);
+        ChangedItem changedItem = (ChangedItem)mq.Receive().Body;
+    }
+    
     [MapToApiVersion("1")] 
     [HttpGet]
     public ActionResult<Cart?> GetV1(Guid cartId)

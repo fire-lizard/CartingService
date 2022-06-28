@@ -11,6 +11,7 @@
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Experimental.System.Messaging" Version="1.1.0" />
     <PackageReference Include="LiteDB" Version="5.0.11" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
