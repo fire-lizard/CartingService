@@ -75,10 +75,10 @@ public class CartController
     [HttpPost]
     public IActionResult Post(Guid cartId, CartItem item)
     {
-        CartRepository cr = new CartRepository();
+        CartBusinessObject cbo = new CartBusinessObject();
         try
         {
-            cr.AddItem(cartId, item);
+            cbo.AddItem(cartId, item);
         }
         catch (Exception exc)
         {
@@ -93,10 +93,10 @@ public class CartController
     [HttpDelete]
     public IActionResult Delete(Guid cartId, int cartItemId)
     {
-        CartRepository cr = new CartRepository();
+        CartBusinessObject cbo = new CartBusinessObject();
         try
         {
-            cr.RemoveItem(cartId, cartItemId);
+            cbo.RemoveItem(cartId, cartItemId);
         }
         catch (Exception exc)
         {

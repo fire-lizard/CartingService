@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using CartingService.DAL;
+using LiteDB;
 
-namespace CartingService.BLL
+namespace CartingService.DAL
 {
     public interface ICartRepository
     {
+        ILiteDatabase GetDatabase();
         Cart GetCart(Guid cartId);
         ICollection<CartItem> GetItems(Guid cartId);
-        void AddItem(Guid cartId, CartItem item);
-        void RemoveItem(Guid cartId, int itemId);
     }
 }

@@ -5,7 +5,7 @@ namespace CartingService.DAL
 {
     public class Cart
     {
-        public Guid CartId { get; set; }
+        public Guid Id { get; set; }
         
         public ICollection<CartItem> Items { get; set; }
     }
